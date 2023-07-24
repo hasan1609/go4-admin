@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MobilController;
 use App\Http\Controllers\MotorController;
+use App\Http\Controllers\RestoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,11 @@ Route::get('/mobil/{id}', [MobilController::class, 'show'])->name('mobil.show');
 Route::get('/mobil/edit/{id}', [MobilController::class, 'edit'])->name('mobil.edit');
 Route::post('/mobil/{id}', [MobilController::class, 'update'])->name('mobil.update');
 Route::post('/mobil/delete/{id}', [MobilController::class, 'destroy'])->name('mobil.destroy');
+
+Route::get('/resto', [RestoController::class, 'index'])->name('resto.index');
+Route::get('/resto/create', [RestoController::class, 'create'])->name('resto.create');
+Route::post('/resto', [RestoController::class, 'store'])->name('resto.store');
+Route::get('/resto/{id}', [RestoController::class, 'show'])->name('resto.show');
+Route::get('/resto/edit/{id}', [RestoController::class, 'edit'])->name('resto.edit');
+Route::post('/resto/update/{id}', [RestoController::class, 'update'])->name('resto.update');
+Route::post('/resto/delete/{id}', [RestoController::class, 'destroy'])->name('resto.destroy');

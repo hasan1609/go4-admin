@@ -25,7 +25,7 @@
                 </li><!--//nav-item-->
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link" href="/restos">
+                    <a class="nav-link" href="/resto">
                         <span class="nav-icon">
                             <i class="fa fa-shopping-bag"></i>
                          </span>
