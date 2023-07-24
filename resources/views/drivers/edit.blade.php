@@ -18,7 +18,7 @@
             
             <div class="app-card-body p-4">
                 <div class="col-auto">
-                    <form action="{{ route('drivers.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('drivers.update', $driver['data']['id_user']) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" value="{{ $driver['data']['id_user'] }}">
                         <div class="row mb-2">
@@ -31,7 +31,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="" class="mb-2">Email</label>
-                                    <input type="text" value="{{ $driver['data']['email'] }}" name="email" id="email" class="form-control" placeholder="Masukkan Email">
+                                    <input type="text" disabled value="{{ $driver['data']['email'] }}" name="email" id="email" class="form-control" placeholder="Masukkan Email">
                                 </div>
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                             <div class="form-group">
                                 <label for="" class="mb-2">Foto</label>
                                 <br>
-                                <img src="http://192.168.2.20/go4-sumbergedang/rest-g4s{{ $driver['data']['detail_driver']['foto'] }}" class="img-thumbnail img-preview" style="margin: 5px;" width="300" />
+                                <img src="http://192.168.2.3/go4-sumbergedang/rest-g4s{{ $driver['data']['detail_driver']['foto'] }}" class="img-thumbnail img-preview" style="margin: 5px;" width="300" />
                                 <input type="file" class="form-control"placeholder="Masukkan Foto" id="foto" name="foto" onchange="prevBeritaGambar()">
                             </div>
                         </div>

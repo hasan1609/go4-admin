@@ -37,8 +37,7 @@
                                 <a class="btn btn-success" href="/drivers/edit/{{ $data['id_user'] }}">
                                   <i class="fa fa-pencil"></i>
                                 </a>
-                                <form action="" method="post">
-                                  @method('delete')
+                                <form action="{{ route('drivers.destroy', $data['id_user']) }}" method="post">
                                   @csrf
                                   <button class="btn btn-danger" onclick="return confirm('Apakah anda menyetujui ?')" >
                                   <i class="fa fa-trash"></i>

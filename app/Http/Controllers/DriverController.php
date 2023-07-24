@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 
 class DriverController extends Controller
 {
-    const API_URL = 'http://192.168.2.20/go4-sumbergedang/rest-g4s/public/api/driver';
+    const API_URL = 'http://192.168.2.3/go4-sumbergedang/rest-g4s/public/api/driver';
     /**
      * Display a listing of the resource.
      */
@@ -107,18 +107,90 @@ class DriverController extends Controller
 
     public function update(Request $request, $id)
     {
-        // ...
-        $response = Http::put(self::API_URL.$id, [
-            // ...
+        $request->validate([
+            'nama' => 'sometimes',
+            'tempat_lahir' => 'sometimes',
+            'ttl' => 'date|date_format:Y-m-d',
+            'jk' => 'sometimes',
+            'alamat' => 'sometimes',
+            'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'kendaraan' => 'sometimes',
+            'status_driver' => 'sometimes',
+            'plat_no' => 'sometimes',
+            'thn_kendaraan' => 'digits:4',
+            'tlp' => 'numeric|digits_between:10,13',
         ]);
 
-        // ...
+        // dd($request->all());n+ 
+        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+            $file = $request->file('foto');
+            $fileName = $file->getClientOriginalName();
+            $fileContents = file_get_contents($file->getPathname());
+        } else {
+            // Jika tidak ada foto yang diunggah, set nilai default atau kirimkan null ke server API sesuai kebutuhan
+            $fileName = null;
+            $fileContents = null;
+        }
+
+        $requestData = [
+            'nama' => $request->nama,
+                'tlp' => $request->tlp,
+                'tempat_lahir' => $request->tempat_lahir,
+                'ttl' => $request->ttl,
+                'jk' => $request->jk,
+                'alamat' => $request->alamat,
+                'kendaraan' => $request->kendaraan,
+                'status_driver' => $request->status_driver,
+                'plat_no' => $request->plat_no,
+                'thn_kendaraan' => $request->thn_kendaraan,
+        ];
+
+        if ($fileContents !== null) {
+            $response = Http::attach('foto', $fileContents, $fileName)
+                ->post(self::API_URL . '/update/' . $id, $requestData);
+        } else {
+            $response = Http::post(self::API_URL . '/update/' . $id, $requestData);
+        }
+
+        if ($response->successful()) {
+            $data = $response->json(); // Mendapatkan data dari respon API
+            // Redirect ke halaman selanjutnya atau tampilkan pesan sukses kepada pengguna
+            return redirect()->route('drivers.index')->with('success', 'Driver berhasil ditambahkan!');
+        } else {
+            // Jika permintaan gagal
+            $errorResponse = $response->json(); // Jika API mengembalikan pesan kesalahan dalam bentuk JSON
+            $errors = [];
+            if (isset($errorResponse['message']) && is_array($errorResponse['message'])) {
+                foreach ($errorResponse['message'] as $field => $fieldErrors) {
+                    $errors[$field] = $fieldErrors[0];
+                }
+            }
+
+            // Kembali ke halaman "create" dengan membawa pesan error
+            return back()->withErrors($errors);
+        }
+
     }
 
     public function destroy($id)
     {
-        $response = Http::delete(self::API_URL.$id);
+        $response = Http::post(self::API_URL . '/delete/' . $id);
+        if ($response->successful()) {
+            $data = $response->json(); // Mendapatkan data dari respon API
+            // Redirect ke halaman selanjutnya atau tampilkan pesan sukses kepada pengguna
+            return redirect()->route('drivers.index')->with('success', 'Driver berhasil ditambahkan!');
+        } else {
+            // Jika permintaan gagal
+            $errorResponse = $response->json(); // Jika API mengembalikan pesan kesalahan dalam bentuk JSON
+            $errors = [];
+            if (isset($errorResponse['message']) && is_array($errorResponse['message'])) {
+                foreach ($errorResponse['message'] as $field => $fieldErrors) {
+                    $errors[$field] = $fieldErrors[0];
+                }
+            }
 
-        // ...
+            // Kembali ke halaman "create" dengan membawa pesan error
+            return back()->withErrors($errors);
+        }
     }
 }
