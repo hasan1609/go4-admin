@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class DriverController extends Controller
+class MotorController extends Controller
 {
     const API_URL = 'http://192.168.2.3/go4-sumbergedang/rest-g4s/public/api/driver';
     /**
@@ -13,22 +13,22 @@ class DriverController extends Controller
      */
     public function index()
     {
-        $response = Http::get(self::API_URL);
-        $drivers = $response->json();
+        $response = Http::get(self::API_URL.'/motor');
+        $motor = $response->json();
 
-        return view('drivers.index', compact('drivers'));
+        return view('motor.index', compact('motor'));
     }
 
     public function show($id)
     {
         $response = Http::get(self::API_URL . '/' . $id);
         $driver = $response->json();
-        return view('drivers.view', compact('driver'));
+        return view('motor.view', compact('driver'));
     }
 
     public function create()
     {
-        return view('drivers.create');
+        return view('motor.create');
     }
 
     public function store(Request $request)
@@ -42,7 +42,6 @@ class DriverController extends Controller
             'alamat' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
             'kendaraan' => 'required',
-            'status_driver' => 'required',
             'plat_no' => 'required',
             'thn_kendaraan' => 'required',
             'tlp' => 'required|numeric|digits_between:10,13',
@@ -72,7 +71,7 @@ class DriverController extends Controller
                 'jk' => $request->jk,
                 'alamat' => $request->alamat,
                 'kendaraan' => $request->kendaraan,
-                'status_driver' => $request->status_driver,
+                'status_driver' => "motor",
                 'plat_no' => $request->plat_no,
                 'thn_kendaraan' => $request->thn_kendaraan,
             ]);
@@ -80,7 +79,7 @@ class DriverController extends Controller
         if ($response->successful()) {
             $data = $response->json(); // Mendapatkan data dari respon API
             // Redirect ke halaman selanjutnya atau tampilkan pesan sukses kepada pengguna
-            return redirect()->route('drivers.index')->with('success', 'Driver berhasil ditambahkan!');
+            return redirect()->route('motor.index')->with('success', 'Driver berhasil ditambahkan!');
         } else {
             // Jika permintaan gagal
             $errorResponse = $response->json(); // Jika API mengembalikan pesan kesalahan dalam bentuk JSON
@@ -102,7 +101,7 @@ class DriverController extends Controller
         $response = Http::get(self::API_URL . '/' . $id);
         $driver = $response->json();
 
-        return view('drivers.edit', compact('driver'));
+        return view('motor.edit', compact('driver'));
     }
 
     public function update(Request $request, $id)
@@ -115,7 +114,6 @@ class DriverController extends Controller
             'alamat' => 'sometimes',
             'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
             'kendaraan' => 'sometimes',
-            'status_driver' => 'sometimes',
             'plat_no' => 'sometimes',
             'thn_kendaraan' => 'digits:4',
             'tlp' => 'numeric|digits_between:10,13',
@@ -134,15 +132,15 @@ class DriverController extends Controller
 
         $requestData = [
             'nama' => $request->nama,
-                'tlp' => $request->tlp,
-                'tempat_lahir' => $request->tempat_lahir,
-                'ttl' => $request->ttl,
-                'jk' => $request->jk,
-                'alamat' => $request->alamat,
-                'kendaraan' => $request->kendaraan,
-                'status_driver' => $request->status_driver,
-                'plat_no' => $request->plat_no,
-                'thn_kendaraan' => $request->thn_kendaraan,
+            'tlp' => $request->tlp,
+            'tempat_lahir' => $request->tempat_lahir,
+            'ttl' => $request->ttl,
+            'jk' => $request->jk,
+            'alamat' => $request->alamat,
+            'kendaraan' => $request->kendaraan,
+            'status_driver' => "motor",
+            'plat_no' => $request->plat_no,
+            'thn_kendaraan' => $request->thn_kendaraan,
         ];
 
         if ($fileContents !== null) {
@@ -155,7 +153,7 @@ class DriverController extends Controller
         if ($response->successful()) {
             $data = $response->json(); // Mendapatkan data dari respon API
             // Redirect ke halaman selanjutnya atau tampilkan pesan sukses kepada pengguna
-            return redirect()->route('drivers.index')->with('success', 'Driver berhasil ditambahkan!');
+            return redirect()->route('motor.index')->with('success', 'Driver berhasil diubah!');
         } else {
             // Jika permintaan gagal
             $errorResponse = $response->json(); // Jika API mengembalikan pesan kesalahan dalam bentuk JSON
@@ -178,7 +176,7 @@ class DriverController extends Controller
         if ($response->successful()) {
             $data = $response->json(); // Mendapatkan data dari respon API
             // Redirect ke halaman selanjutnya atau tampilkan pesan sukses kepada pengguna
-            return redirect()->route('drivers.index')->with('success', 'Driver berhasil ditambahkan!');
+            return redirect()->route('motor.index')->with('success', 'Driver berhasil ditambahkan!');
         } else {
             // Jika permintaan gagal
             $errorResponse = $response->json(); // Jika API mengembalikan pesan kesalahan dalam bentuk JSON

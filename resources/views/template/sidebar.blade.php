@@ -9,15 +9,20 @@
         
         <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
             <ul class="app-menu list-unstyled accordion" id="menu-accordion">
-                <li class="nav-item">
+                <li class="nav-item has-submenu">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-                    <a class="nav-link active" href="/drivers">
-                        <span class="nav-icon">
-                            <i class="fa fa-motorcycle"></i>
+                    <a class="nav-link submenu-toggle" href="#" data-bs-toggle="collapse" data-bs-target="#submenu-1" aria-expanded="false" aria-controls="submenu-1">
+                        <span class="nav-icon"><i class="fa fa-subway"></i>
                          </span>
                          <span class="nav-link-text">Data Driver</span>
                     </a><!--//nav-link-->
-                </li><!--//nav-item-->	
+                    <div id="submenu-1" class="collapse submenu submenu-1" data-bs-parent="#menu-accordion">
+                        <ul class="submenu-list list-unstyled">
+                            <li class="submenu-item"><a class="submenu-link" href="/motor">Motor</a></li>
+                            <li class="submenu-item"><a class="submenu-link" href="/mobil">Mobil</a></li>
+                        </ul>
+                    </div>
+                </li><!--//nav-item-->
                 <li class="nav-item">
                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                     <a class="nav-link" href="/restos">

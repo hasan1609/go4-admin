@@ -18,7 +18,7 @@
             
             <div class="app-card-body p-4">
                 <div class="col-auto">
-                    <form action="{{ route('drivers.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('motor.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-2">
                             <div class="col-6">
@@ -43,11 +43,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="" class="mb-2">Pilih Kategori</label>
-                                    <select class="form-select" name="status_driver">
-                                        <option value="motor">Motor</option>
-                                        <option value="mobil">Mobil</option>
-                                      </select>
+                                    <label for="" class="mb-2">Kategori</label>
+                                    <input type="text" value="Motor" disabled class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -128,7 +125,7 @@
                                 </button>
                             </div>
                             <div class="col-auto">
-                                <a class="btn btn-warning text-white" href="/drivers">
+                                <a class="btn btn-warning text-white" href="/motor">
                                     BATAL
                                 </a>
                             </div>

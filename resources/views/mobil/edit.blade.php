@@ -18,7 +18,7 @@
             
             <div class="app-card-body p-4">
                 <div class="col-auto">
-                    <form action="{{ route('drivers.update', $driver['data']['id_user']) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('mobil.update', $driver['data']['id_user']) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" value="{{ $driver['data']['id_user'] }}">
                         <div class="row mb-2">
@@ -44,11 +44,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="" class="mb-2">Pilih Kategori</label>
-                                    <select class="form-select" name="status_driver">
-                                        <option value="motor" {{ $driver['data']['detail_driver']['status_driver'] == "motor" ? 'selected' : '' }}>Motor</option>
-                                        <option value="mobil" {{ $driver['data']['detail_driver']['status_driver'] == "mobil" ? 'selected' : '' }}>Mobil</option>
-                                      </select>
+                                    <label for="" class="mb-2">Kategori</label>
+                                    <input type="text" disabled value="{{ $driver['data']['detail_driver']['status_driver'] }}" name="status_driver" id="status_driver" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -129,7 +126,7 @@
                                 </button>
                             </div>
                             <div class="col-auto">
-                                <a class="btn btn-warning text-white" href="/drivers">
+                                <a class="btn btn-warning text-white" href="/mobil">
                                     BATAL
                                 </a>
                             </div>

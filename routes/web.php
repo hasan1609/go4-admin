@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DriverController;
+use App\Http\Controllers\MobilController;
+use App\Http\Controllers\MotorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,18 @@ use App\Http\Controllers\DriverController;
 //     return view('welcome');
 // });
 
-Route::get('/drivers', [DriverController::class, 'index'])->name('drivers.index');
-Route::get('/drivers/create', [DriverController::class, 'create'])->name('drivers.create');
-Route::post('/drivers', [DriverController::class, 'store'])->name('drivers.store');
-Route::get('/drivers/{id}', [DriverController::class, 'show'])->name('drivers.show');
-Route::get('/drivers/edit/{id}', [DriverController::class, 'edit'])->name('drivers.edit');
-Route::post('/drivers/{id}', [DriverController::class, 'update'])->name('drivers.update');
-Route::post('/drivers/delete/{id}', [DriverController::class, 'destroy'])->name('drivers.destroy');
+Route::get('/motor', [MotorController::class, 'index'])->name('motor.index');
+Route::get('/motor/create', [MotorController::class, 'create'])->name('motor.create');
+Route::post('/motor', [MotorController::class, 'store'])->name('motor.store');
+Route::get('/motor/{id}', [MotorController::class, 'show'])->name('motor.show');
+Route::get('/motor/edit/{id}', [MotorController::class, 'edit'])->name('motor.edit');
+Route::post('/motor/update/{id}', [MotorController::class, 'update'])->name('motor.update');
+Route::post('/motor/delete/{id}', [MotorController::class, 'destroy'])->name('motor.destroy');
+
+Route::get('/mobil', [MobilController::class, 'index'])->name('mobil.index');
+Route::get('/mobil/create', [MobilController::class, 'create'])->name('mobil.create');
+Route::post('/mobil', [MobilController::class, 'store'])->name('mobil.store');
+Route::get('/mobil/{id}', [MobilController::class, 'show'])->name('mobil.show');
+Route::get('/mobil/edit/{id}', [MobilController::class, 'edit'])->name('mobil.edit');
+Route::post('/mobil/{id}', [MobilController::class, 'update'])->name('mobil.update');
+Route::post('/mobil/delete/{id}', [MobilController::class, 'destroy'])->name('mobil.destroy');
