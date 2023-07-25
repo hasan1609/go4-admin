@@ -24,13 +24,13 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="" class="mb-2">Nama Resto</label>
-                                    <input type="text" id="nama_resto" name="nama_resto" class="form-control" placeholder="Masukkan Nama Resto">
+                                    <input type="text" id="nama_resto" name="nama_resto" class="form-control" required placeholder="Masukkan Nama Resto">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="" class="mb-2">Nama Lengkap / Pemilik</label>
-                                    <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan Nama Resto / Pemilik">
+                                    <input type="text" id="nama" name="nama" class="form-control" required placeholder="Masukkan Nama Resto / Pemilik">
                                 </div>
                             </div>
                         </div>
@@ -38,13 +38,13 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="" class="mb-2">Email</label>
-                                    <input type="text"name="email" id="email" class="form-control" placeholder="Masukkan Email">
+                                    <input type="text"name="email" id="email" class="form-control" required placeholder="Masukkan Email">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="" class="mb-2">Tlp/Wa</label>
-                                    <input type="text" name="tlp" id="tlp" class="form-control" placeholder="Masukkan Tlp/Wa.">
+                                    <input type="text" name="tlp" id="tlp" class="form-control" required placeholder="Masukkan Tlp/Wa.">
                                 </div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="" class="mb-2">NIK</label>
-                                    <input type="text" name="nik" id="nik" class="form-control" placeholder="Masukkan NIK">
+                                    <input type="text" name="nik" id="nik" class="form-control" required placeholder="Masukkan NIK">
                                 </div>
                             </div>
                             <div class="col-6">
@@ -73,20 +73,26 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="" class="mb-2">Latitude</label>
-                                    <input type="text"name="latitude" id="latitude" class="form-control" placeholder="Masukkan Latitude">
+                                    <input type="text"name="latitude" id="latitude" class="form-control" required placeholder="Masukkan Latitude">
+                                    <label>
+                                        <input type="checkbox" id="showTextlat"> default
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="" class="mb-2">Longitude</label>
-                                    <input type="text" name="longitude" id="longitude" class="form-control" placeholder="Masukkan Longitude">
+                                    <input type="text" name="longitude" id="longitude" class="form-control" required placeholder="Masukkan Longitude">
+                                    <label>
+                                        <input type="checkbox" id="showTextlong"> default
+                                    </label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-auto mb-2">
                             <div class="form-group">
                                 <label for="" class="mb-2">Alamat</label>
-                                <textarea name="alamat" id="alamat" class="form-control" rows="5" placeholder="Masukkan Alamat Lengkap"></textarea>
+                                <textarea name="alamat" id="alamat" class="form-control" rows="5" required placeholder="Masukkan Alamat Lengkap"></textarea>
                             </div>
                         </div>
                         <div class="col-auto mb-3">
@@ -134,5 +140,34 @@
         }
     }
 
+    // Ambil elemen checkbox dan input
+    const showTextlat = document.getElementById("showTextlat");
+    const latitude = document.getElementById("latitude");
+    const showTextlong = document.getElementById("showTextlong");
+    const longitude = document.getElementById("longitude");
+
+    // Tambahkan event listener untuk checkbox ketika statusnya berubah
+    showTextlat.addEventListener("change", function() {
+      // Jika checkbox dicentang, aktifkan input dan tampilkan teks
+      if (showTextlat.checked) {
+        latitude.value = "-7.1567632";
+      } else {
+        // Jika checkbox tidak dicentang, nonaktifkan input dan kosongkan teks
+        latitude.value = "";
+      }
+    });
+
+    // Tambahkan event listener untuk checkbox ketika statusnya berubah
+    showTextlong.addEventListener("change", function() {
+      // Jika checkbox dicentang, aktifkan input dan tampilkan teks
+      if (showTextlong.checked) {
+        longitude.value = "112.1567632";
+      } else {
+        // Jika checkbox tidak dicentang, nonaktifkan input dan kosongkan teks
+        longitude.value = "";
+      }
+    });
+
 </script>
+
 @endpush

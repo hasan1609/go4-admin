@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 
 class MobilController extends Controller
 {
-    const API_URL = 'http://192.168.2.3/go4-sumbergedang/rest-g4s/public/api/driver';
+    const API_URL = 'http://192.168.2.14/go4-sumbergedang/rest-g4s/public/api/driver';
     /**
      * Display a listing of the resource.
      */

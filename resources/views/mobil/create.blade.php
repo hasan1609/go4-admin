@@ -24,13 +24,13 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="" class="mb-2">Nama Driver</label>
-                                    <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan Nama Driver">
+                                    <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan Nama Driver" required>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="" class="mb-2">Email</label>
-                                    <input type="text"name="email" id="email" class="form-control" placeholder="Masukkan Email">
+                                    <input type="email" name="email" id="email" class="form-control" required placeholder="Masukkan Email">
                                 </div>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="" class="mb-2">Tlp/Wa</label>
-                                    <input type="text" name="tlp" id="tlp" class="form-control" placeholder="Masukkan Tlp/Wa.">
+                                    <input type="text" name="tlp" id="tlp" class="form-control" required placeholder="Masukkan Tlp/Wa.">
                                 </div>
                             </div>
                             <div class="col-6">
@@ -52,7 +52,7 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="" class="mb-2">NIK</label>
-                                    <input type="text" name="nik" id="nik" class="form-control" placeholder="Masukkan NIK">
+                                    <input type="text" name="nik" id="nik" class="form-control" required placeholder="Masukkan NIK">
                                 </div>
                             </div>
                             <div class="col-6">
@@ -73,19 +73,19 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="" class="mb-2">Nama Kendaraan</label>
-                                    <input type="text" id="kendaraan" name="kendaraan" class="form-control" placeholder="Masukkan Nama Kendaraan">
+                                    <input type="text" id="kendaraan" name="kendaraan" class="form-control" required placeholder="Masukkan Nama Kendaraan">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="" class="mb-2">Plat No.</label>
-                                    <input type="text"name="plat_no" id="plat_no" class="form-control" placeholder="Masukkan Plat No.">
+                                    <input type="text"name="plat_no" id="plat_no" class="form-control" required placeholder="Masukkan Plat No.">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="" class="mb-2">Tahun Kendaraan</label>
-                                    <input type="text"name="thn_kendaraan" id="thn_kendaraan" class="form-control" placeholder="Masukkan Tahun Kendaraan">
+                                    <input type="text"name="thn_kendaraan" id="thn_kendaraan" class="form-control" required placeholder="Masukkan Tahun Kendaraan">
                                 </div>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                         <div class="col-auto mb-2">
                             <div class="form-group">
                                 <label for="" class="mb-2">Alamat</label>
-                                <textarea name="alamat" id="alamat" class="form-control" rows="5" placeholder="Masukkan Alamat Lengkap"></textarea>
+                                <textarea name="alamat" id="alamat" class="form-control" rows="5" required placeholder="Masukkan Alamat Lengkap"></textarea>
                             </div>
                         </div>
                         <div class="col-auto mb-3">
@@ -115,7 +115,7 @@
                                 <label for="" class="mb-2">Foto</label>
                                 <br>
                                 <img src="../gambar/default.png" class="img-thumbnail img-preview" style="margin: 5px;" width="300" />
-                                <input type="file" class="form-control"placeholder="Masukkan Foto" id="foto" name="foto" onchange="prevBeritaGambar()">
+                                <input type="file" class="form-control" required placeholder="Masukkan Foto" id="foto" name="foto" onchange="prevBeritaGambar()">
                             </div>
                         </div>
                         <div class="row g-2 justify-content-start justify-content-md-start align-items-center">
